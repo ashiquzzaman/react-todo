@@ -1,3 +1,25 @@
+label{
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+li {
+  list-style:none;
+  background-image:none;
+  background-repeat:none;
+  background-position:0; 
+}
+ul
+{
+  list-style-type:none;
+  padding:0px;
+  margin:0px;
+}
+
+
 .App {
   
 }
