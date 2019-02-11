@@ -11,6 +11,8 @@ li {
   background-image:none;
   background-repeat:none;
   background-position:0; 
+  background: '#f4f4f4';
+  border-bottom:1px #ccc dotted;
 }
 ul
 {

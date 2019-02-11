@@ -27,10 +27,11 @@ class App extends Component {
   // Delete Todo
   delTodo = (id) => {
 	this.setState({
-		todoList: this.state.todoList.map((todo) => {
-			if (todo.id !== id) {
-				return todo;
-			}						
+		todoList: this.state.todoList.filter((todo) => {
+			// if (todo.id !== id) {
+			// 	return todo;
+			// }		
+			return todo.id !== id;				
 		})
 	});
   }
@@ -49,7 +50,7 @@ class App extends Component {
 			<div className="App">
 		     <Header title={this.state.title}/>
 				<section>
-				<AddTodo addTodo={this.addTodo} />			
+			    	<AddTodo addTodo={this.addTodo} />			
 						<TodoList todoList={this.state.todoList} makeComplete={this.makeComplete}  delTodo={this.delTodo} />				
 				</section>
 			</div>
