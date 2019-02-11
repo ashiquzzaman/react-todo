@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+//import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
-import TodoList from './Components/Todo/TodoList';
 import Header from './Components/Layout/Header';
+import TodoList from './Components/Todo/TodoList';
+import AddTodo from './Components/Todo/AddTodo';
 import data from './DB/data.json';
 
 class App extends Component {
@@ -9,6 +11,8 @@ class App extends Component {
 		title: 'ToDo List',
 		todoList: data.todoList
 	};
+	  // Toggle Complete
+
 	makeComplete = (id) => {
 		this.setState({
 			todoList: this.state.todoList.map((todo) => {
@@ -19,12 +23,34 @@ class App extends Component {
 			})
 		});
 	};
+
+  // Delete Todo
+  delTodo = (id) => {
+	this.setState({
+		todoList: this.state.todoList.map((todo) => {
+			if (todo.id !== id) {
+				return todo;
+			}						
+		})
+	});
+  }
+  addTodo = (title) => {
+	this.setState({ todoList: [...this.state.todoList,
+		 {
+		id:4,
+		title:title,
+		completed: false
+	  }] 
+	});
+  }
+
 	render() {
 		return (
 			<div className="App">
 		     <Header title={this.state.title}/>
-				<section>				
-						<TodoList todoList={this.state.todoList} makeComplete={this.makeComplete} />				
+				<section>
+				<AddTodo addTodo={this.addTodo} />			
+						<TodoList todoList={this.state.todoList} makeComplete={this.makeComplete}  delTodo={this.delTodo} />				
 				</section>
 			</div>
 		);
