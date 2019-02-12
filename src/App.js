@@ -11,7 +11,7 @@ class App extends Component {
 		title: 'ToDo List',
 		todoList: data.todoList
 	};
-	  // Toggle Complete
+	// Toggle Complete
 
 	makeComplete = (id) => {
 		this.setState({
@@ -24,34 +24,38 @@ class App extends Component {
 		});
 	};
 
-  // Delete Todo
-  delTodo = (id) => {
-	this.setState({
-		todoList: this.state.todoList.filter((todo) => {
-			// if (todo.id !== id) {
-			// 	return todo;
-			// }		
-			return todo.id !== id;				
-		})
-	});
-  }
-  addTodo = (title) => {
-	this.setState({ todoList: [...this.state.todoList,
-		 {
-		id:4,
-		title:title,
-		completed: false
-	  }] 
-	});
-  }
+	// Delete Todo
+	delTodo = (id) => {
+		this.setState({
+			todoList: this.state.todoList.filter((todo) => {
+				// if (todo.id !== id) {
+				// 	return todo;
+				// }
+				return todo.id !== id;
+			})
+		});
+	};
+	addTodo = (title) => {
+		var id = this.state.todoList.length + 1;
+		this.setState({
+			todoList: [
+				...this.state.todoList,
+				{
+					id: id,
+					title: title,
+					completed: false
+				}
+			]
+		});
+	};
 
 	render() {
 		return (
 			<div className="App">
-		     <Header title={this.state.title}/>
+				<Header title={this.state.title} />
 				<section>
-			    	<AddTodo addTodo={this.addTodo} />			
-						<TodoList todoList={this.state.todoList} makeComplete={this.makeComplete}  delTodo={this.delTodo} />				
+					<AddTodo addTodo={this.addTodo} />
+					<TodoList todoList={this.state.todoList} makeComplete={this.makeComplete} delTodo={this.delTodo} />
 				</section>
 			</div>
 		);
